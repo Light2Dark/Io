@@ -1,13 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject LinesHolder;
     public float moveSpeed;
 
-    // [Range(0, 0.3f)] [SerializeField] private float movementSmoothening;
+    public MusicNotesReader Notes;
+    Dictionary <int, int> numJumps;
 
-    Rigidbody2D player;
+    // [Range(0, 0.3f)] [SerializeField] private float movementSmoothening;
 
     LinesScript lines;
     float lineSeparation, xStartPos, yStartPos;
@@ -18,21 +20,19 @@ public class PlayerMovement : MonoBehaviour
     {
         lines = LinesHolder.GetComponent<LinesScript>();
         lineSeparation = lines.lineSeparation;
-        noteValue = 55; // 55 is E bottomE
 
-        player = this.GetComponent<Rigidbody2D>();
+        numJumps = Notes.NumberOfJumpsDict;
+
+        this.transform.position = Notes.transform.position;
         xStartPos = this.transform.position.x;
         yStartPos = this.transform.position.y;
     }
 
-    void Update() {
+    public void Move(int noteValue) {
+        int jumps = numJumps[noteValue];
+        Vector2 position = new Vector2(xStartPos, (lineSeparation/2) * jumps + yStartPos);
         
-    }
-
-    public void Move(int steps) {
-        float jumps = steps * lineSeparation/2;
-        Vector2 position = new Vector2(xStartPos, yStartPos + jumps);
-        player.MovePosition(position * moveSpeed * Time.fixedDeltaTime);   
+        this.transform.position = new Vector3(position.x, position.y, 0);
     }
 
     public int GetPlayerValue() {

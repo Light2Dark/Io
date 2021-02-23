@@ -36,7 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_voice.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\MainMenu.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_rev_v1.cs" />
@@ -46,22 +45,20 @@
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\HiSample.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\ExtendedFlycam.cs" />
      <Compile Include="Assets\Scripts\LinesScript.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\Scripts\PlayerMusicStream.cs" />
      <Compile Include="Assets\Scripts\MusicPause.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_rev_v2.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\RotateObject.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\SourceCatchMusic\Script\Collide.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKGameObject\ToolsUnityEvent.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKMidi\MidiScan.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_chorus.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\ScreenLogger\ScreenLogger.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\Water\Water\Scripts\Displace.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\MidiEventComparer.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKUtil\DicAudioWave.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKUtil\CustomStyle.cs" />
+     <Compile Include="Assets\Scripts\GameOver.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\SFFile.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\SmpteOffsetEvent.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKUtil\BuilderInfo.cs" />
@@ -71,6 +68,7 @@
      <Compile Include="Assets\MidiPlayer\Demo\Water\Water\Scripts\PlanarReflection.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\TestMidiFilePlayerMulti\SavWav.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\MidiCommandCode.cs" />
+     <Compile Include="Assets\Scripts\NotesDestroy.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\MoveObject.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKUtil\ObjectUtilities.cs" />
      <Compile Include="Assets\MidiPlayer\TutorialInfo\Scripts\Readme.cs" />
@@ -79,11 +77,11 @@
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\KeySignatureEvent.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\MetaEvent.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\ImSoundFont.cs" />
+     <Compile Include="Assets\Scripts\MIDINotes.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_conv.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_channel.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\TestMidiStream.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\GUISelectSoundFont.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\ExternalComponents\FlyingCamera.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\Water\Water\Scripts\WaterTile.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\SourceCatchMusic\Script\ControlView.cs" />
@@ -120,7 +118,6 @@
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKGameObject\MidiPlayerGlobal.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKGameObject\MPTKListItem.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_env_data.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKGameObject\MidiFileLoader.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\TestMidiFilePlayerMulti\MovePoint.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\ImBank.cs" />
@@ -138,7 +135,6 @@
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\VoiceAudioSource.cs" />
      <Compile Include="Assets\MidiPlayer\Demo\FreeDemos\Script\SceneHandler.cs" />
      <Compile Include="Assets\Scripts\MusicNotesReader.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_tuning.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\MidiEventCollection.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\NAudio\PitchWheelChangeEvent.cs" />
@@ -155,7 +151,8 @@
      <Compile Include="Assets\MidiPlayer\Scripts\FluidSynth\fluid_global.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKGameObject\MidiSynth.cs" />
      <Compile Include="Assets\MidiPlayer\Scripts\MPTKSoundFont\HiMod.cs" />
-     <Compile Include="Assets\Scripts\NotesDestroy.cs" />
+     <Compile Include="Assets\Scripts\mainMenuScript.cs" />
+     <Compile Include="Assets\Scripts\UploadFile.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\MidiPlayer\Demo\Builder\IMPORTANT  NOTICE.txt" />
@@ -167,6 +164,7 @@
      <None Include="Assets\MidiPlayer\Scripts\NAudio\_NAudio_License.txt" />
      <None Include="Assets\MidiPlayer\Resources\MidiSet.txt" />
      <None Include="Assets\MidiPlayer\Scripts\ScreenLogger\Readme.txt" />
+     <None Include="Assets\Assets\DEMO - PERSONAL USE ONLY - CalligraphyFont net.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\MidiPlayer\Scripts\ScreenLogger\_ScreenLogger_License.txt" />
      <None Include="Assets\MidiPlayer\Third-Party Notices.txt" />
@@ -848,6 +846,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="SimpleFileBrowser.Runtime.csproj">
+      <Project>{85871d13-44c1-2ba8-d8ce-16386a20be32}</Project>
+      <Name>SimpleFileBrowser.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleFileBrowser.Editor.csproj">
+      <Project>{f4302d5f-d04b-525f-c3e0-806bb3a2f914}</Project>
+      <Name>SimpleFileBrowser.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -20,6 +20,7 @@ public class MusicNotesReader : MonoBehaviour
     Vector3 startPosNote;
 
     bool musicPaused;
+    float startYPos;
 
     Dictionary <int, string> NumberNoteDict = new Dictionary<int, string> {
         {22, "A#1"},
@@ -96,7 +97,11 @@ public class MusicNotesReader : MonoBehaviour
         {93, "A7"},
         {94, "A#7"},
         {95, "B7"},
-        {96, "C8"}
+        {96, "C8"},
+        {97, "C#8"},
+        {98, "D8"},
+        {99, "D#8"},
+        {100, "E8"}
     };
 
     /*
@@ -173,7 +178,7 @@ public class MusicNotesReader : MonoBehaviour
         {"A7", 13}
     }; */
 
-    Dictionary <int, int> NumberOfJumpsDict = new Dictionary<int, int> {};
+    public Dictionary <int, int> NumberOfJumpsDict = new Dictionary<int, int> {};
 
     private void Start() {    
 
@@ -185,7 +190,9 @@ public class MusicNotesReader : MonoBehaviour
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         Vector3 rightPos = new Vector3(screenWidth - rightOffset, 0, 0);
+        
         startPosNote = mainCam.ScreenToWorldPoint(rightPos);
+        startYPos = this.transform.position.y;
     }
 
     private void Update() {
@@ -200,7 +207,7 @@ public class MusicNotesReader : MonoBehaviour
         string noteName = NumberNoteDict[noteValue];
         int numJumps = NumberOfJumpsDict[noteValue];
 
-        float yPosition = (lineSeparation / 2) * numJumps; // WE STIL NEED TO THINK ABT SHARPS AND FLATS
+        float yPosition = (lineSeparation / 2) * numJumps + startYPos; // WE STIL NEED TO THINK ABT SHARPS AND FLATS
         Vector3 position = new Vector3 (startPosNote.x, yPosition, 0);
 
         GameObject songNote = Instantiate(songNoteOri, position, rotation); // starts from 55
@@ -248,6 +255,11 @@ public class MusicNotesReader : MonoBehaviour
 
             jumpCounter++;
         }
+    }
+
+    public void SetNoteSpeed(float speed) {
+        Debug.Log(speed);
+        noteMoveSpeed = speed;
     }
 
 }

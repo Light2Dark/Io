@@ -7,7 +7,10 @@ public class PlayerMusicStream : MonoBehaviour
 {
     public MidiFilePlayer music;
     public MusicNotesReader musicNotes;
+    public int notesMissed;
     MidiStreamPlayer midiStreamPlayer;
+
+    public PlayerMovement player;
 
     [Range(0,100)]
     public int volume;
@@ -15,9 +18,18 @@ public class PlayerMusicStream : MonoBehaviour
     [Range(0,1000)]
     public int durationNote;
 
-    int notePlayerVal, noteCompVal;
+    int notePlayerVal = -2;
+    int noteCompVal = -1;
     int lowestNote = 48;
-    int highestNote = 59;
+    int highestNote = 71;  // should change to 71
+    int octaveDifference = 12;
+
+    public event System.Action TooManyMistakes;
+    int limitMistakes = 100;
+    bool gameOver;
+
+    public bool pauseNotesSetting;
+    bool creativeMode;
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +54,11 @@ public class PlayerMusicStream : MonoBehaviour
         }
         */
 
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            if (music.MPTK_IsPaused) {
-                UnpauseNotes();
+        if ( (notesMissed >= limitMistakes) && !gameOver && creativeMode == false) {
+            if (TooManyMistakes != null) {
+                TooManyMistakes();
             }
+            gameOver = true;
         }
 
     }
@@ -60,36 +72,50 @@ public class PlayerMusicStream : MonoBehaviour
             Velocity = 100, // Sound can vary depending on the velocity
             Delay = 0
         };
+        player.Move(noteVal);
         midiStreamPlayer.MPTK_PlayEvent(notePlaying);
         notePlayerVal = noteVal;
-        CheckPlayerNotes();
     }
 
-    public void PauseNotes(string notePassedInValue) { //pauses notes and music being played
+
+    public void PauseNotes() { //pauses notes and music being played
         music.MPTK_Pause();
         musicNotes.PauseNotes(true); 
+    }
+
+    
+    public void UnpauseNotes() { // unpauses
+        if(music.MPTK_IsPaused) {
+            music.MPTK_UnPause();
+            musicNotes.PauseNotes(false);
+        }
+    }
+
+    public void ReceiveNotes(string notePassedInValue) { // the note passed from MIDI is stored in noteCompVal
         int.TryParse(notePassedInValue, out noteCompVal);
         
         while (noteCompVal > highestNote) {
-            noteCompVal = noteCompVal - 12;
+            noteCompVal = noteCompVal - octaveDifference;
         }
 
         while (noteCompVal < lowestNote) {
-            noteCompVal += 12;
+            noteCompVal += octaveDifference;
         }
-        Debug.Log(noteCompVal);
     }
 
-    public void UnpauseNotes() { // unpauses
-        music.MPTK_UnPause();
-        musicNotes.PauseNotes(false);
+    public bool CheckPlayerNotes() {
+        return noteCompVal == notePlayerVal ? true : false;
     }
 
-    public void CheckPlayerNotes() {
-        if (music.MPTK_IsPaused) {
-            if (notePlayerVal == noteCompVal) {
-                UnpauseNotes();
-            }
-        }
+    public void SetPauseNotesSetting(bool set) {
+        pauseNotesSetting = set;
+    } 
+
+    public void SetLimitMistakes(int limit) {
+        limitMistakes = limit;
+    }
+
+    public void SetCreativeMode(bool set) {
+        creativeMode = set;
     }
 }

@@ -18,10 +18,15 @@ public class LinesScript : MonoBehaviour
         foreach(Transform lineTransform in this.transform) {
             lines.Add(lineTransform);
         }
-        Debug.Log(lines[1].position.y);
 
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 5; i++) { // for first 5 lines, treble cleff.
             lines[i].Translate(Vector3.up * lineSeparation * i, Space.World);
+        }
+
+        int m = 2;
+        for (int i = 5; i < 10; i++) {
+            lines[i].Translate(Vector3.down * lineSeparation * m, Space.World);
+            m++;
         }
     }
 
